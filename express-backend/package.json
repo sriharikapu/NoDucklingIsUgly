@@ -1,0 +1,20 @@
+{
+  "name": "ndiu",
+  "version": "1.0.0",
+  "description": "No Duckling Is Ugly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "mongodb-stitch-server-sdk": "^4.0.13"
+  }
+}
