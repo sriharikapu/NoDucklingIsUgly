@@ -40,7 +40,7 @@ def recognize_speaker(wav_data):
         print(x, result['confidence'])
         return "Pranav" if x == "No Match" else x
     else:
-        print("Pranav Normal Default")
+        # print("Pranav Normal Default")
         return "Pranav"
 
 # recognize_speaker(None)

@@ -5,6 +5,7 @@ from queue import Queue
 import io
 import pyaudio
 import requests
+import time
 import wave
 import webrtcvad
 
@@ -16,7 +17,7 @@ CHUNK = 160
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
-RECORD_SECONDS = 50
+RECORD_SECONDS = 6000
 WAVE_OUTPUT_FILENAME = "recording {wav_file_num}.wav"
 SILENT_FRAME_COUNT = 50
 
@@ -47,6 +48,7 @@ class SpeechToText(Thread):
                 print(list(self.last_lines.queue)[::-1])
                 victims = context.context_back(list(self.last_lines.queue)[::-1]) # Use context based checking to find the victim
                 print(victims)
+                # d = int(datetime.datetime.utcnow().strftime("%s")) * 1000 
                 if victims:
                     for victim in victims:
                         data = {
@@ -55,6 +57,7 @@ class SpeechToText(Thread):
                             "statement" : speech,
                             "toxicity" : score,
                             "location" : "PennApps",
+                            "datetime" : int(round(time.time() * 1000)) + 40000000
                         }
                         print(data)
                         r = requests.post("https://lit-forest-54107.herokuapp.com/api/logBullyingEvent", data=data)
@@ -62,10 +65,11 @@ class SpeechToText(Thread):
                 else:
                     data = {
                         "bully" : speaker,
-                        "victim" : "Unknown",
+                        "victim" : "Jennifer",
                         "statement" : speech,
                         "toxicity" : score,
                         "location" : "PennApps",
+                        "datetime" : int(round(time.time() * 1000)) + 40000000
                     }
                     print(data)
                     r = requests.post("https://lit-forest-54107.herokuapp.com/api/logBullyingEvent", data=data)
