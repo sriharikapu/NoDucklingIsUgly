@@ -1,0 +1,80 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Class Graph Analysis</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" style="overflow-x:hidden">
+                            <graph *ngIf="eventInputDone && studentInputDone" [nodes]="nodes" [links]="links"></graph>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Common Bullying Events</h4>
+                        <p class="card-category">These are the most common bullying incidents in the classroom</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Bully
+                                    </th>
+                                    <th>
+                                        Victim
+                                    </th>
+                                    <th>
+                                        Occurrences
+                                    </th>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let event of commonEvents">
+                                      <td>{{event.source.student.firstName}}</td>
+                                      <td>{{event.target.student.firstName}}</td>
+                                      <td>{{event.intensity}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">Sexism Indicator</h4>
+                            <p class="card-category">This normalized value grants insight into which students may have sexist tendencies.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <th>
+                                            Student
+                                        </th>
+                                        <th>
+                                            Sexism Value
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let event of sexism">
+                                          <td>{{event.name}}</td>
+                                          <td>{{event.value.toFixed(2)}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,46 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">History</h4>
+                      <p class="card-category">This is the list of recent bullying activity.</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Bully
+                                  </th>
+                                  <th>
+                                      Victim
+                                  </th>
+                                  <th>
+                                      Toxicity
+                                  </th>
+                                  <th>
+                                      Statement
+                                  </th>
+                                  <th>
+                                      Time
+                                  </th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let event of recentEvents">
+                                    <td>{{event.bully}}</td>
+                                    <td>{{event.victim}}</td>
+                                    <td>{{event.toxicity}}</td>
+                                    <td>{{event.statement}}</td>
+                                    <td>{{event.date}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
